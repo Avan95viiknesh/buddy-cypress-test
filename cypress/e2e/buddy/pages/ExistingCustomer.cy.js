@@ -1,12 +1,6 @@
 import Login from "../page objects/loginpage/Login.cy";
 
 describe("Create opportunity for existing customers", () => {
-  //   Cypress.on("uncaught:exception", (err, runnable) => {
-  //     //   returning false here prevents Cypress from
-  //     //     // failing the test
-  //     return false;
-  //   });
-
   it("should create", () => {
     cy.visit("https://pstest.Avaniko.com");
 
@@ -56,8 +50,7 @@ describe("Create opportunity for existing customers", () => {
 
     // end date
 
-    cy.get('#basic_endDate').click().type("2023-02-28").type("{enter}")
-
+    cy.get("#basic_endDate").click().type("2023-02-28").type("{enter}");
 
     cy.wait(1000);
     // source
@@ -116,8 +109,8 @@ describe("Create opportunity for existing customers", () => {
     ).click();
 
     // followup date
-   
-    cy.get("#basic_followUpDate").click().type("2023-02-28").type( "{enter}")
+
+    cy.get("#basic_followUpDate").click().type("2023-02-28").type("{enter}");
 
     // comments box
 

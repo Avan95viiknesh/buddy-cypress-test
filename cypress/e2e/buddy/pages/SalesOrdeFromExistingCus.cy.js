@@ -1,12 +1,7 @@
 import Login from "../page objects/loginpage/Login.cy";
 
 describe("Create opportunity for existing customers", () => {
-  //   Cypress.on("uncaught:exception", (err, runnable) => {
-  //     //   returning false here prevents Cypress from
-  //     //     // failing the test
-  //     return false;
-  //   });
-
+  
   it("should create", () => {
     cy.visit("https://pstest.Avaniko.com");
 
