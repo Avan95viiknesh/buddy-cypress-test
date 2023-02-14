@@ -166,4 +166,21 @@ describe("Create opportunity for existing customers", () => {
     // click save button
     cy.get("button[class='ant-btn ant-btn-primary ant-btn-block hp-bg-success-1 hp-border-color-success-1']").click();
   });
+
+
+  it.only("export button check", () => {
+ //open sidebar
+ cy.get(".hp-mr-24 > .ant-btn").click();
+ //open sales dropdown tab
+ cy.get(
+   ".ant-drawer-body > .ant-menu > :nth-child(5) > .ant-menu-submenu-title > .ant-menu-title-content"
+ ).click();
+
+ // click opportunity button
+ cy.get("a[href='/opportunity']").click();
+
+ // click export button
+ cy.get("body > div:nth-child(1) > section:nth-child(1) > section:nth-child(2) > main:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1) > span:nth-child(2)").click();
+  })
+
 });

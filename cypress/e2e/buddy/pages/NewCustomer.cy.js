@@ -1,6 +1,8 @@
  
 
 describe("Buddy", () => {
+
+  
   
   it("Login", () => {
     cy.visit("https://pstest.Avaniko.com");
@@ -92,4 +94,6 @@ describe("Buddy", () => {
     cy.get(".ant-modal-confirm-content").contains("Customer added succesfully");
     cy.get(".ant-modal-confirm-btns > .ant-btn").click();
   });
+
+ 
 });
