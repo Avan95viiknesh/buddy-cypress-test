@@ -42,8 +42,9 @@ describe("Create opportunity for existing customers", () => {
 
     // reference No field
 
-    cy.get("#basic_numAtCard").click().type("876543");
-
+    cy.get(
+      "input[placeholder*='Enter Reference No']"
+    ).click().type("876543");
     // payment terms field
 
     cy.get("#basic_payTerms").click();

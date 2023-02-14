@@ -39,8 +39,8 @@ describe("Create opportunity for existing customers", () => {
 
     // opportunity details
 
-    cy.get("#basic_opprName").type("existing opportunity");
-
+    // cy.get("#basic_opprName").type("existing opportunity");
+    cy.get('input[placeholder*="Opportunity Description"]').type('existing opportunity') // getting based on placeholder
     // starting date
 
     cy.get(
@@ -97,15 +97,17 @@ describe("Create opportunity for existing customers", () => {
     ).click();
 
     // opportunity value
-    cy.get("#basic_opprValue").type("10000");
+    cy.get(
+      "input[placeholder*='Opportunity Value']"
+    ).type("10000");
 
     // currency
     cy.get(
       ".ant-input-group-addon > .ant-row > .ant-col > .ant-form-item-control-input > .ant-form-item-control-input-content > .ant-select > .ant-select-selector"
     ).click();
 
-    cy.xpath(
-      "//div[@class='ant-select-item-option-content'][normalize-space()='INR']"
+    cy.get(
+       "div[title='INR'] div[class='ant-select-item-option-content']"
     ).click();
 
     // followup date
@@ -113,8 +115,9 @@ describe("Create opportunity for existing customers", () => {
     cy.get("#basic_followUpDate").click().type("2023-02-28").type("{enter}");
 
     // comments box
-
-    cy.get("#basic_comments").type("Need to follow");
+    cy.get(
+      "#rc-tabs-2-panel-1"
+    ).click().type("Need to follow");
 
     // save btn
     cy.get('[style=""] > .ant-btn').click();

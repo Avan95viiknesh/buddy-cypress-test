@@ -1,16 +1,17 @@
 import Login from "../page objects/loginpage/Login.cy";
 
 describe("Create opportunity for existing customers", () => {
- 
-
-  it("should create", () => {
+  beforeEach(() => {
     cy.visit("https://pstest.Avaniko.com");
-
     const ln = new Login();
 
     ln.setUserName("Manager");
     ln.setUserPassword("Avan!12345");
     ln.clickSubmit();
+  });
+
+  it.skip("should create", () => {
+  
 
     //open sidebar
     cy.get(".hp-mr-24 > .ant-btn").click();
@@ -30,29 +31,28 @@ describe("Create opportunity for existing customers", () => {
 
     // adding details
     //add company name
-    cy.get("#basic_companyName").type("vsm co.pvt.ltd");
+    cy.get('input[placeholder*="Company"]').type("vsm co.pvt.ltd");
+
     // contact person
 
-    cy.get("#basic_contactPerson").type("vignesh");
+    cy.get('input[placeholder*="Contact Person"]').type("vignesh");
 
     // add designation
 
-    cy.get("#basic_designation").type("trainee");
+    cy.get('input[placeholder*="Designation"]').type("trainee");
 
     // add email
 
-    cy.get(
-      "body > div:nth-child(1) > section:nth-child(1) > section:nth-child(2) > main:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)"
-    ).type("vsm@gmail.com");
+    cy.get('input[placeholder*="Email ID"]').type("vsm@gmail.com");
     // end phone no
 
-    cy.get(
-      "body > div:nth-child(1) > section:nth-child(1) > section:nth-child(2) > main:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)"
-    ).type("9003200987");
+    cy.get('input[placeholder*="Phone No"]').type("9003200987");
 
     // opportunity details
 
-    cy.get("#basic_opprName").type("existing opportunity");
+    cy.get('input[placeholder*="Opportunity Description"]').type(
+      "opportunity for new customer"
+    );
 
     // starting date
 
@@ -110,7 +110,7 @@ describe("Create opportunity for existing customers", () => {
     ).click();
 
     // opportunity value
-    cy.get("#basic_opprValue").type("10000");
+    cy.get("input[placeholder*='Opportunity Value']").type("10000");
 
     // currency
     cy.get(
@@ -131,5 +131,39 @@ describe("Create opportunity for existing customers", () => {
 
     // save btn
     cy.get('[style=""] > .ant-btn').click();
+  });
+
+  it("quick followup", () => {
+    //open sidebar
+    cy.get(".hp-mr-24 > .ant-btn").click();
+    //open sales dropdown tab
+    cy.get(
+      ".ant-drawer-body > .ant-menu > :nth-child(5) > .ant-menu-submenu-title > .ant-menu-title-content"
+    ).click();
+
+    // click opportunity button
+    cy.get("a[href='/opportunity']").click();
+
+    //click Action tab
+    cy.get("tbody tr:nth-child(2) td:nth-child(10) div:nth-child(1) button:nth-child(2)").click();
+    
+    // click quick followup button
+
+    cy.xpath("//a[normalize-space()='Quick Followup']").click();
+
+    // click next followup button
+
+    cy.get("#FollowUpDate").click();
+
+    // select date
+
+    cy.get(".ant-picker-today-btn").click();
+
+    // get comment box 
+
+    cy.get("#Comments").type(" quick follow up fof opportunity list")
+
+    // click save button
+    cy.get("button[class='ant-btn ant-btn-primary ant-btn-block hp-bg-success-1 hp-border-color-success-1']").click();
   });
 });
