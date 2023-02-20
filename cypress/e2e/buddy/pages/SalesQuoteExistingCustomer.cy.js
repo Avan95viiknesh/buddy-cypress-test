@@ -2,14 +2,18 @@ import Login from "../page objects/loginpage/Login.cy";
 
 describe("Create opportunity for existing customers", () => {
  
-  it("should create", () => {
-    cy.visit("https://pstest.Avaniko.com");
 
+  beforeEach(() => {
+    cy.visit('/');
     const ln = new Login();
 
     ln.setUserName("Manager");
     ln.setUserPassword("Avan!12345");
     ln.clickSubmit();
+  });
+
+  it("should create", () => {
+   
 
     //open sidebar
     cy.get(".hp-mr-24 > .ant-btn").click();

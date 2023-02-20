@@ -2,7 +2,7 @@ import Login from "../page objects/loginpage/Login.cy";
 
 describe("Create opportunity for existing customers", () => {
   beforeEach(() => {
-    cy.visit("https://pstest.Avaniko.com");
+    cy.visit('/');
     const ln = new Login();
 
     ln.setUserName("Manager");
@@ -133,7 +133,7 @@ describe("Create opportunity for existing customers", () => {
     cy.get('[style=""] > .ant-btn').click();
   });
 
-  it("quick followup", () => {
+  it.only("quick followup", () => {
     //open sidebar
     cy.get(".hp-mr-24 > .ant-btn").click();
     //open sales dropdown tab
@@ -145,9 +145,9 @@ describe("Create opportunity for existing customers", () => {
     cy.get("a[href='/opportunity']").click();
 
     //click Action tab
-    cy.get("tbody tr:nth-child(2) td:nth-child(10) div:nth-child(1) button:nth-child(2)").click();
+    cy.get("tbody tr:nth-child(9) td:nth-child(10) div:nth-child(1) button:nth-child(2)").click();
     
-    // click quick followup button
+    // click quick follow up button
 
     cy.xpath("//a[normalize-space()='Quick Followup']").click();
 
@@ -161,14 +161,16 @@ describe("Create opportunity for existing customers", () => {
 
     // get comment box 
 
-    cy.get("#Comments").type(" quick follow up fof opportunity list")
+    // cy.get("#Comments").type(" quick follow up for opportunity list")
+    cy.get("#Comments").type("checking multiple follow ups more than four times")
+
 
     // click save button
     cy.get("button[class='ant-btn ant-btn-primary ant-btn-block hp-bg-success-1 hp-border-color-success-1']").click();
   });
 
 
-  it.only("export button check", () => {
+  it("export button check", () => {
  //open sidebar
  cy.get(".hp-mr-24 > .ant-btn").click();
  //open sales dropdown tab

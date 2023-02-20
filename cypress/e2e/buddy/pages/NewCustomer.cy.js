@@ -1,14 +1,19 @@
- 
+import Login from "../page objects/loginpage/Login.cy";
+
 
 describe("Buddy", () => {
 
+  beforeEach(() => {
+    cy.visit('/');
+    const ln = new Login();
+
+    ln.setUserName("Manager");
+    ln.setUserPassword("Avan!12345");
+    ln.clickSubmit();
+  });
+
+  it("Create new customer", () => {
   
-  
-  it("Login", () => {
-    cy.visit("https://pstest.Avaniko.com");
-    cy.get("#basic_userName").type("Manager");
-    cy.get("#basic_password").type("Avan!12345");
-    cy.get(".ant-btn").click();
     cy.get("b").contains("Expense List");
     cy.xpath(
       "//button[@class='ant-btn ant-btn-text ant-btn-icon-only hp-mobile-sidebar-button']"
@@ -78,14 +83,14 @@ describe("Buddy", () => {
       '#rc-tabs-3-panel-2 > .ant-form > [style="margin-left: -17px; margin-right: -17px; row-gap: 0px;"] > :nth-child(8) > .ant-row > .ant-form-item-control > .ant-form-item-control-input > .ant-form-item-control-input-content > .ant-select > .ant-select-selector'
     )
       .click()
-      .type("india");
-    cy.xpath(`//div[contains(text(),'India')]`).click();
+      .type("Zambia");
+    cy.get("div[title='Zambia'] div[class='ant-select-item-option-content']").click();
     cy.get(
       '#rc-tabs-3-panel-2 > .ant-form > [style="margin-left: -17px; margin-right: -17px; row-gap: 0px;"] > :nth-child(7) > .ant-row > .ant-form-item-control > .ant-form-item-control-input > .ant-form-item-control-input-content > .ant-select > .ant-select-selector'
     )
       .click()
-      .type("tamil nadu");
-    cy.xpath(`//div[contains(text(),'Tamil Nadu')]`).click();
+      .type("Eastern (Chipata)");
+   // cy.xpath(`//div[contains(text(),'Eastern (Chipata)')]`).click();
     // cy.get('#gstin').type(1234567890)
     cy.get(
       ':nth-child(10) > .ant-space > [style=""] > .ant-btn > span'
@@ -94,6 +99,4 @@ describe("Buddy", () => {
     cy.get(".ant-modal-confirm-content").contains("Customer added succesfully");
     cy.get(".ant-modal-confirm-btns > .ant-btn").click();
   });
-
- 
 });

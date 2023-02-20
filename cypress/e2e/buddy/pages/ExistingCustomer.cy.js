@@ -1,9 +1,8 @@
 import Login from "../page objects/loginpage/Login.cy";
 
 describe("Create opportunity for existing customers", () => {
-  it("should create", () => {
-    cy.visit("https://pstest.Avaniko.com");
-
+  beforeEach(() => {
+    cy.visit("/");
     const ln = new Login();
 
     ln.setUserName("Manager");
@@ -19,18 +18,20 @@ describe("Create opportunity for existing customers", () => {
 
     // click opportunity button
     cy.get("a[href='/opportunity']").click();
+  });
 
+  it("create opportunity for existing customer", () => {
     //create opportunity
 
     cy.get(
       "button[class='ant-btn ant-btn-default hp-text-color-primary-1 hp-bg-dark-primary-1 hp-border-color-dark-primary-1 hp-text-color-dark-0']"
     ).click();
 
-    //click existing opportunity rado button
+    //click existing opportunity radio button
     cy.get("button[role='switch']").click();
 
     // adding details
-
+    cy.wait(1000);
     cy.get("#basic_customerCode").click();
 
     cy.get(
@@ -40,7 +41,9 @@ describe("Create opportunity for existing customers", () => {
     // opportunity details
 
     // cy.get("#basic_opprName").type("existing opportunity");
-    cy.get('input[placeholder*="Opportunity Description"]').type('existing opportunity') // getting based on placeholder
+    cy.get('input[placeholder*="Opportunity Description"]').type(
+      "existing opportunity"
+    ); // getting based on placeholder
     // starting date
 
     cy.get(
@@ -97,9 +100,7 @@ describe("Create opportunity for existing customers", () => {
     ).click();
 
     // opportunity value
-    cy.get(
-      "input[placeholder*='Opportunity Value']"
-    ).type("10000");
+    cy.get("input[placeholder*='Opportunity Value']").type("10000");
 
     // currency
     cy.get(
@@ -107,7 +108,7 @@ describe("Create opportunity for existing customers", () => {
     ).click();
 
     cy.get(
-       "div[title='INR'] div[class='ant-select-item-option-content']"
+      "div[title='INR'] div[class='ant-select-item-option-content']"
     ).click();
 
     // followup date
@@ -115,11 +116,27 @@ describe("Create opportunity for existing customers", () => {
     cy.get("#basic_followUpDate").click().type("2023-02-28").type("{enter}");
 
     // comments box
-    cy.get(
-      "#rc-tabs-2-panel-1"
-    ).click().type("Need to follow");
+    cy.get("#rc-tabs-2-panel-1")
+      .click()
+      .type("Need to follow #123 for ^this **kind of comment");
 
     // save btn
     cy.get('[style=""] > .ant-btn').click();
+  });
+
+  it.only("Edit and Update opportunity", () => {
+    // get action button
+    cy.get("a[href='/NewOpportunity?id=40057']").click();
+    cy.wait(1000);
+    // update designation status
+
+    cy.get("input[placeholder*='Designation']").type("developer", {
+      force: true,
+    });
+
+    //click update button
+    cy.get(
+      "button[class='ant-btn ant-btn-primary hp-bg-success-1 hp-border-color-success-1']"
+    ).click();
   });
 });
