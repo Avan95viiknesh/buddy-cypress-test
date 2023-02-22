@@ -221,7 +221,7 @@ describe("Add new source in settings opportunity", () => {
     ).click();
 
     // click edit status btn
-    cy.xpath("(//*[name()='svg'][@role='presentation'])[34]").click();
+    cy.xpath("(//*[name()='svg'][@role='presentation'])[38]").click();
 
     // get status field name
     // cy.get("#name").clear().type("open002");
@@ -229,19 +229,21 @@ describe("Add new source in settings opportunity", () => {
     // get allow edit btn
     cy.get("#allowEdit").click();
 
-    // select yes
+    // select No
     cy.get(
       "div[title='No'] div[class='ant-select-item-option-content']"
     ).click();
-
-    // get allow copy to
-    cy.xpath("(//span[@title='No'][normalize-space()='No'])[2]").click({ force: true });
+    cy.wait(1000);
 
     // select yes
     cy.xpath(
       "(//div[contains(@class,'ant-select-item-option-content')][normalize-space()='Yes'])[1]"
     ).click({ force: true });
-
+    cy.wait(1000);
+    // get allow copy to
+    cy.xpath("(//span[@title='No'][normalize-space()='No'])[2]").click({
+      force: true,
+    });
     // click update btn
     cy.xpath("//span[normalize-space()='Update']").click();
 

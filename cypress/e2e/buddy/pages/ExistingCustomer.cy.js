@@ -124,7 +124,7 @@ describe("Create opportunity for existing customers", () => {
     cy.get('[style=""] > .ant-btn').click();
   });
 
-  it.only("Edit and Update opportunity", () => {
+  it("Edit and Update opportunity", () => {
     // get action button
     cy.get("a[href='/NewOpportunity?id=40057']").click();
     cy.wait(1000);
@@ -139,4 +139,13 @@ describe("Create opportunity for existing customers", () => {
       "button[class='ant-btn ant-btn-primary hp-bg-success-1 hp-border-color-success-1']"
     ).click();
   });
+
+
+  it.only("Validate Advanced Search option", () => {
+    
+    // get search field
+    cy.get("#search").type("vsm co.pvt.ltd").type("{enter}")
+  });
+
+
 });
