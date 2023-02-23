@@ -140,12 +140,80 @@ describe("Create opportunity for existing customers", () => {
     ).click();
   });
 
-
   it.only("Validate Advanced Search option", () => {
-    
     // get search field
-    cy.get("#search").type("vsm co.pvt.ltd").type("{enter}")
+   // cy.get("#search").type("vsm co.pvt.ltd").type("{enter}")
+
+  //  search emp responsible
+//     cy.get("#empRespCode")
+//       .then((el) => {
+//         el[0].scrollIntoView();
+//         return el;
+//       })
+//       .click();
+//     cy.wait(1000);
+//  //   select value
+//     cy.get(
+//       "div[title='Srikanth'] div[class='ant-select-item-option-content']"
+//     ).click();
+
+//    // get stage field 
+//     cy.get("#qualification").click();
+
+//    // select value
+//    cy.get("div[title='Hot'] div[class='ant-select-item-option-content']").click();
+
+//   //  get stage field
+//    cy.xpath("(//input[@id='stageCode'])[1]").click();
+
+//    // select value from stage field
+//    cy.get("div[title='Proposal sent'] div[class='ant-select-item-option-content']").click();
+
+   // click stage field to sorting
+   cy.wait(1000)
+   cy.xpath("(//span[normalize-space()='Stage'])[1]").click({ multiple: true });
+
+   // click followup date 
+   cy.get("(//span[normalize-space()='Followup date'])[1]").click({ multiple: true });
+
+//     // click create opportunity btn
+
+//     cy.get(
+//       "button[class='ant-btn ant-btn-default hp-text-color-primary-1 hp-bg-dark-primary-1 hp-border-color-dark-primary-1 hp-text-color-dark-0']"
+//     ).click();
+
+// // click opportunity stage btn
+// cy.get("#basic_stageCode").click();
+
+// // select opportunity value
+// cy.get("div[title='vsm'] div[class='ant-select-item-option-content']").click();
+
+// // select vertical field
+// cy.get("#basic_verticalCode").click();
+
+// // select vertical field value
+// cy.get("div[title='Flour Mills'] div[class='ant-select-item-option-content']").click();
+
+// // get employee responsible field
+// cy.get("#basic_empRespCode").click();
+
+// // select value
+// cy.get("div[title='Kumar.N'] div[class='ant-select-item-option-content']").click();
+
+// // get opportunity value field
+// cy.get("#basic_opprValue").click().type("30000");
+
+// // select currency  field
+// cy.get("#basic_currency").click();
+
+// // select currency type
+//  cy.get("div[title='USD'] div[class='ant-select-item-option-content']").click();
+
+// // get followup date field
+// cy.get("#basic_followUpDate").click();
+
+// // select date 
+// cy.get("td[title='2023-02-24'] div[class='ant-picker-cell-inner']").click();
+
   });
-
-
 });
